@@ -7,9 +7,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 console.log("Modules to load: "+commandFiles);
 
-// Place your client and guild ids here
-const clientId = '1021345425111928862';
-const guildId = '183694625003798539';
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
