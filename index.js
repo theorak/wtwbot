@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const { strictEqual } = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
-const { dbhostname, dbusername, dbpassword, dbdatabase, token, discordlogprofile } = require('./config.json');
+const { dbhostname, dbusername, dbpassword, dbdatabase, token, discordlogprofile } = require('.json-storage/config.json');
 
 var dbcon  = mysql.createConnection({
 	host     : dbhostname,
