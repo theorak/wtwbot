@@ -1,0 +1,448 @@
+{
+   "fractions":{
+      "The Empire":[
+         {
+            "name":"Karl Franz",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01113155/emp_KarlFranz-mon_256.png"
+         },
+         {
+            "name":"Balthasar Gelt",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01113249/emp_balth-mon_256.png"
+         },
+         {
+            "name":"Markus Wulfhart",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01113334/emp_markus-mon_256.png"
+         },
+         {
+            "name":"Volkmar the Grim",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01113407/emp_volkmar-mon_256-1.png"
+         },
+         {
+            "name":"Elspeth von Draken",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/4/45/Wissenland.png"
+         }
+      ],
+      "Lizardmen":[
+         {
+            "name":"Lord Mazdamundi",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01104712/lzd_Mazdamundi-mon_256.png"
+         },
+         {
+            "name":"Kroq-Gar",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01104854/lzd_Kroq-Gar-mon_256.png"
+         },
+         {
+            "name":"Tehenhauin",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01105019/lzd_Tehenhauin-mon_256.png"
+         },
+         {
+            "name":"Tiktaq’to",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01103056/lzd_tlaqua-mon_256.png"
+         },
+         {
+            "name":"Gor-Rok",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01103747/lzd_itza-mon_256.png"
+         },
+         {
+            "name":"Nakai the Wanderer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01105057/lzd_Nakai-mon_256.png"
+         },
+         {
+            "name":"Oxyotl",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01103701/lzd_oxyotl-mon_256.png"
+         }
+      ],
+      "Norsca":[
+         {
+            "name":"Wulfrik the Wanderer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01105848/nor_Wulfrik-mon_256.png"
+         },
+         {
+            "name":"Throgg",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01105922/nor_Throgg-mon_256.png"
+         }
+      ],
+      "Kislev":[
+         {
+            "name":"Tzarina Katarin",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01110403/ksl_Katarin-mon_256.png"
+         },
+         {
+            "name":"Kostaltyn",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01110449/ksl_Kostaltyn-mon_256.png"
+         },
+         {
+            "name":"Boris Bokha",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01110532/ksl_Boris-mon_256.png"
+         },
+         {
+            "name":"Mother Ostankya",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/f/f0/Daughters_of_the_Forest.png"
+         }
+      ],
+      "High Elves":[
+         {
+            "name":"Tyrion",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04100749/hlf_Tyrion-mon_256_2.png"
+         },
+         {
+            "name":"Teclis",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04083803/hef_Teclis-mon_256.png"
+         },
+         {
+            "name":"Alarielle",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04083715/hef_Alarielle-mon_256.png"
+         },
+         {
+            "name":"Alith Anar",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04083627/hef_Alith-mon_256.png"
+         },
+         {
+            "name":"Eltharion the Grim",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04083955/hef_Eltharion-mon_256.png"
+         },
+         {
+            "name":"Imrik",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04083032/hef_imrik-mon_256.png"
+         }
+      ],
+      "Bretonnia":[
+         {
+            "name":"Louen Leoncoeur",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04085303/brt_Louen-mon_256.png"
+         },
+         {
+            "name":"Alberic de Bordeleaux",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04085011/hef_Alberic-mon_256.png"
+         },
+         {
+            "name":"The Fay Enchantress",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04085221/brt_Fay-mon_256.png"
+         },
+         {
+            "name":"Repanse de Lyonesse",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04085119/brt_Repanse-mon_256.png"
+         }
+      ],
+      "Grand Cathay":[
+         {
+            "name":"Zhao Ming",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04090841/cth_Zhao-mon_256.png"
+         },
+         {
+            "name":"Miao Ying",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/04090927/cth_Miao-mon_256.png"
+         },
+         {
+            "name":"Yuan Bo, the Jade Dragon",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/1/1b/The_Jade_Court.png"
+         }
+      ],
+      "Skaven":[
+         {
+            "name":"Queek Headtaker",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05083359/skv_Queek-mon_256.png"
+         },
+         {
+            "name":"Lord Skrolk",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05083504/skv_Skrolk-mon_256.png"
+         },
+         {
+            "name":"Tretch Craventail",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05083640/skv_Tretch-mon_256.png"
+         },
+         {
+            "name":"Ikit Claw",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05083832/skv_Ikit-mon_256.png"
+         },
+         {
+            "name":"Deathmaster Snikch",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05083941/skv_Snikch-mon_256.png"
+         },
+         {
+            "name":"Throt the Unclean",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/05084029/skv_Throt-mon_256.png"
+         }
+      ],
+      "Greenskins":[
+         {
+            "name":"Grimgor Ironhide",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05085712/grn_Grimgor-mon_256.png"
+         },
+         {
+            "name":"Azhag the Slaughterer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05085830/grn_Azhag-mon_256.png"
+         },
+         {
+            "name":"Skarsnik",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05085922/grn_Skarsnik-mon_256.png"
+         },
+         {
+            "name":"Wurrzag",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05090054/grn_Wurrzag-mon_256.png"
+         },
+         {
+            "name":"Grom the Paunch",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05090149/grn_Grom-mon_256.png"
+         },
+         {
+            "name":"Gorbad Ironclaw",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/2/22/Ironclaw_Orcs.png"
+         }
+      ],
+      "The Ogre Kingdoms":[
+         {
+            "name":"Greasus Goldtooth",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05090753/ogr_Greasus-mon_256.png"
+         },
+         {
+            "name":"Skrag the Slaughterer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05090836/ogr_Skrag-mon_256.png"
+         },
+         {
+            "name":"Golgfag Maneater",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/6/66/The_Maneaters.png"
+         }
+      ],
+      "Beastmen":[
+         {
+            "name":"Khazarak the One Eye",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05091525/bst_Khazrak-mon_256.png"
+         },
+         {
+            "name":"Malagor the Dark Omen",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05091617/bst_Malagor-mon_256.png"
+         },
+         {
+            "name":"Morghur the Shadowgave",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05092250/bst_Morghur-mon_256_2.png"
+         },
+         {
+            "name":"Taurox the Brass Bull",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05091828/bst_Taurox-mon_256.png"
+         }
+      ],
+      "Tomb Kings":[
+         {
+            "name":"Settra the Imperishable",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05093206/tmb_Settra-mon_256.png"
+         },
+         {
+            "name":"Grand Hierophant Khatep",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05093318/tmb_Khatep-mon_256.png"
+         },
+         {
+            "name":"High Queen Khalida",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05093408/tmb_Khalida-mon_256.png"
+         },
+         {
+            "name":"Arkhan the Black",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05093445/tmb_Arkhan-mon_256.png"
+         }
+      ],
+      "Wood Elves":[
+         {
+            "name":"Orion",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05094203/wef_Orion-mon_256.png"
+         },
+         {
+            "name":"Durthu",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05094252/wef_Durthu-mon_256.png"
+         },
+         {
+            "name":"Sisters of Twilight",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05094343/wef_sot-mon_256.png"
+         },
+         {
+            "name":"Drycha",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05094437/wef_Drycha-mon_256.png"
+         }
+      ],
+      "Vampire Coast":[
+         {
+            "name":"Luthor Harkon",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05095558/cst_Luthor-mon_256.png"
+         },
+         {
+            "name":"Count Noctilus",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05095656/cst_Noctilus-mon_256.png"
+         },
+         {
+            "name":"Aranessa Saltspite",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05095756/cst_Aranessa-mon_256.png"
+         },
+         {
+            "name":"Clyostra Direfin",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/05095854/cst_Clyostra-mon_256.png"
+         }
+      ],
+      "Dwarfs":[
+         {
+            "name":"Thorgrim Grudgebearer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11123442/dwf_Thorgrim-mon_256.png"
+         },
+         {
+            "name":"Ungrim Ironfist",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11123501/dwf_Ungrim-mon_256.png"
+         },
+         {
+            "name":"Belegar Ironhammer",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11123601/dwf_Belegar-mon_256.png"
+         },
+         {
+            "name":"Thorek Ironbrow",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11123656/dwf_Ironbrow-mon_256.png"
+         },
+         {
+            "name":"Grombrindal",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11123744/dwf_Grombrindal-mon_256.png"
+         },
+         {
+            "name":"Malakai Makaisson",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/b/b9/Masters_of_Innovation.png"
+         }
+      ],
+      "Dark Elves":[
+         {
+            "name":"Malekith",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11124650/def_Malekith-mon_256.png"
+         },
+         {
+            "name":"Morathi",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11124855/def_Morathi-mon_256.png"
+         },
+         {
+            "name":"Crone Hellebron",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11124946/def_Hellebron-mon_256.png"
+         },
+         {
+            "name":"Lokhir Fellheart",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11125036/def_Lokhir-mon_256.png"
+         },
+         {
+            "name":"Malus Darkblade",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11125631/def_Darkblade-mon_256.png"
+         },
+         {
+            "name":"Rakarth",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11125742/def_Rakarth-mon_256.png"
+         }
+      ],
+      "Vampire Counts":[
+         {
+            "name":"Mannfred Von Carstein",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11131059/vmp_Mannfred-mon_256.png"
+         },
+         {
+            "name":"Heinrich Kemmler",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11131004/vmp_Kemmler-mon_256.png"
+         },
+         {
+            "name":"Vlad & Isabella Von Carstein",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/30171138/vmp_von_carstein-mon_256.png"
+         },
+         {
+            "name":"Helman Ghorst",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/01101053/vmp_caravan_of_blue_roses-mon_256.png"
+         }
+      ],
+      "Warriors Of Chaos":[
+         {
+            "name":"Archaon The Everchosen",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11131752/chs_Archaon-mon_256.png"
+         },
+         {
+            "name":"Kholek Suneater",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/30171154/chs_kholek-mon_256.png"
+         },
+         {
+            "name":"Prince Sigvald",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/30171212/chs_sigvald-mon_256.png"
+         },
+         {
+            "name":"Be’lakor",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/30171226/chs_Belakor-mon_256.png"
+         },
+         {
+            "name":"Azazel, Prince of Damnation",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11133644/chs_Azazel-mon_256.png"
+         },
+         {
+            "name":"Festus the Leechlord",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11133717/chs_Festus-mon_256.png"
+         },
+         {
+            "name":"Vilitch the Curseling",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11133804/chs_Vilitch-mon_256.png"
+         },
+         {
+            "name":"Valkia the Bloody",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/07/11133842/chs_Valkia-mon_256.png"
+         }
+      ],
+      "Chaos Dwarfes":[
+         {
+            "name":"Astragoth Ironhand",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/9/9c/Disciples_of_Hashut.png"
+         },
+         {
+            "name":"Drazhoath the Ashen",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/d/d6/The_Legion_of_Azgorh.png"
+         },
+         {
+            "name":"Zhatan the Black",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/d/d0/The_Warhost_of_Zharr.png/"
+         }
+      ],
+      "Daemons of Chaos":[
+         {
+            "name":"Daemon Prince",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01114219/dae_daniel-mon_256.png"
+         }
+      ],
+      "Slaanesh":[
+         {
+            "name":"N’Kari",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01114600/dae_nkari-mon_256.png"
+         }
+      ],
+      "Khorne":[
+         {
+            "name":"Skarbrand",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01114336/dae_Skarbrand-mon_256.png"
+         },
+         {
+            "name":"Skulltaker",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/2/29/Blooded_Wanderers.png"
+         },
+         {
+            "name":"Arbaal the Undefeated",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/0/0a/Challengers_of_Khorne.png"
+         }
+      ],
+      "Tzeentch":[
+         {
+            "name":"Kairos Fateweaver",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01114511/dae_Kairos-mon_256.png"
+         },
+         {
+            "name":"The Changeling",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/2/24/The_Deceivers.png"
+         }
+      ],
+      "Nurgle":[
+         {
+            "name":"Ku’gath Plaguefather",
+            "img":"https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2022/06/01114416/dae_kugath-mon_256.png"
+         },
+         {
+            "name":"Tamurkhan the Maggot Lord",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/b/ba/The_Maggot_Host.png"
+         },
+         {
+            "name":"Epidemius",
+            "img":"https://static.wikia.nocookie.net/totalwarhammer_gamepedia/images/e/ea/Tallymen_of_Pestilence.png"
+         }
+      ]
+   }
+}
