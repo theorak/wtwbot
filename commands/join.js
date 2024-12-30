@@ -3,12 +3,12 @@ const { EmbedBuilder } = require('discord.js');
 const sql = require('../self-modules/sql.js');
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('json-storage/fractions.json');
+let rawdata = fs.readFileSync('json-storage/factions.json');
 let factions = JSON.parse(rawdata);
 
 function getImg(interaction){
     let url;
-    factions["fractions"][interaction.options.get("faction").value].forEach(element => {
+    factions["factions"][interaction.options.get("faction").value].forEach(element => {
         if(interaction.options.get("leader").value == element.name){
             url = element.img;
         }
@@ -48,7 +48,7 @@ module.exports = {
             let choices = [];
 
             if (focusedOption.name === 'faction') {
-                Object.keys(factions["fractions"]).forEach(element => {
+                Object.keys(factions["factions"]).forEach(element => {
                     choices.push(element);
                 })
             }
@@ -56,7 +56,7 @@ module.exports = {
             if (focusedOption.name === 'leader') {
                 let faction = interaction.options.get('faction')?.value;
                 if(faction != undefined){
-                    factions["fractions"][faction].forEach(element => {
+                    factions["factions"][faction].forEach(element => {
                         choices.push(element.name);
                     })
                 }else{
