@@ -1,24 +1,20 @@
-# wtwbot
+# Warhammer Total War 3 Bot
 Discord Bot for managing multiplayer games of Total War Warhammer 3.
+A "party" is basically the savegame you have with multiple players, you can name it what you like, who joined as what faction and leader choice will be saved.
 
-# List of supported commands:
-*TODO: fill in all information*
-/join
+## Requirements
+You will need a web server and mysql database running.
+node.js, tested with node 24.9.0.
 
-/leave
+## Setup
+After checking out this repository to your public directory, perform the following steps in /wtwbot.
 
-/parties
+### Before launching
 
-/party
+```npm install```
+Downloads node modules and updates if neccecary.
 
-/profile
-
-/remove-party
-
-/upload
-
-# required setup step
-Please create a config.json file in json-storage with the following contents, filling out the empty spaces:
+Please create a **config.json** file in **/wtwbot/json-storage** with the following contents, filling out the empty spaces:
 ```
 {
 	"token": "",
@@ -31,3 +27,36 @@ Please create a config.json file in json-storage with the following contents, fi
 	"dbdatabase": ""
 }
 ```
+OAuth2 token from server owner.
+
+How to find your IDs: https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID
+
+### To start
+```npm index```
+Starts the app.
+
+## List of supported commands:
+*/join [faction] [leader] [partytag]*
+- Join an existing party, or creates a new one if the partytag is new. 
+- Faction is parent to leader, choose one before tabbing to the leader choice.
+
+*/leave [partytag]*
+- Leave an existing party.
+
+*/parties*
+- List all known parties.
+
+*/party [partytag]*
+- Show details of one party, with players, factions, leader choices, image and more.
+
+*/profile*
+- Show list of parties you have joined.
+
+*/remove-party [partytag]*
+- Removes a party form the database, for clean-up, use with caution.
+
+*/upload [partytag] [file]*
+- Add an image, screenshot of the map e.g. to the party details.
+
+## Additional Info
+Faction and leader data is also customizable in **/wtwbot/json-storage/factions.json**, but Discord has some limits about what image file formats and listing lenght works. *(File is overwritten on git update)*
