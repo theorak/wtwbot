@@ -2,6 +2,8 @@
 Discord Bot for managing multiplayer games of Total War Warhammer 3.
 A "party" is basically the savegame you have with multiple players, you can name it what you like, who joined as what faction and leader choice will be saved.
 
+![Overview of common commands](WTW3bot_app.png)
+
 ## Requirements
 You will need a web server and mysql database running.
 node.js, tested with node 24.9.0.
@@ -59,4 +61,6 @@ Starts the app.
 - Add an image, screenshot of the map e.g. to the party details.
 
 ## Additional Info
-Faction and leader data is also customizable in **/wtwbot/json-storage/factions.json**, but Discord has some limits about what image file formats and listing lenght works. *(File is overwritten on git update)*
+Faction and leader data is up to date in **/wtwbot/json-storage/factions.json**, it is overwritten on update. *(better not modify this list)*
+
+Want autostart or multiple instances, try PM2: https://www.slingacademy.com/article/pm2-how-to-auto-restart-nodejs-app-on-server-reboot/
