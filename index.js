@@ -3,13 +3,13 @@ const mysql = require("mysql");
 const { strictEqual } = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
-const { dbhostname, dbusername, dbpassword, dbdatabase, token, discordlogprofile } = require('.json-storage/config.json');
+let config = JSON.parse(fs.readFileSync('json-storage/config.json'));
 
 var dbcon  = mysql.createConnection({
-	host     : dbhostname,
-	user     : dbusername,
-	password : dbpassword,
-	database : dbdatabase
+	host     : config.dbhostname,
+	user     : config.dbusername,
+	password : config.dbpassword,
+	database : config.dbdatabase
   });
   
 const client = new Client({
@@ -30,7 +30,7 @@ for (const file of commandFiles) {
 }
 
 async function ErrorHandling(error){
-  let user = await client.users.fetch(discordlogprofile);
+  let user = await client.users.fetch(config.discordlogprofile);
   user.send("**Warhammer Bot**\nAn Error occurred!\n\n"+error+"\n\nRestarting...");
 }
 
@@ -87,7 +87,7 @@ client.on('ready', () => {
       
       if(result.length == 0){
         console.log('"Players"-Table dont exist. Creating...');
-        await dbcon.query("CREATE TABLE `players` (`id` INT(11) NOT NULL AUTO_INCREMENT,`discordid` BIGINT(20) NULL DEFAULT NULL,`name` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`partyID` INT(11) NULL DEFAULT '0',PRIMARY KEY (`id`) USING BTREE,INDEX `FK_players_parties` (`partyID`) USING BTREE,CONSTRAINT `FK_players_parties` FOREIGN KEY (`partyID`) REFERENCES `"+dbdatabase+"`.`parties` (`partyid`) ON UPDATE NO ACTION ON DELETE CASCADE)", function (err, result) {
+        await dbcon.query("CREATE TABLE `players` (`id` INT(11) NOT NULL AUTO_INCREMENT,`discordid` BIGINT(20) NULL DEFAULT NULL,`name` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`partyID` INT(11) NULL DEFAULT '0',PRIMARY KEY (`id`) USING BTREE,INDEX `FK_players_parties` (`partyID`) USING BTREE,CONSTRAINT `FK_players_parties` FOREIGN KEY (`partyID`) REFERENCES `"+config.dbdatabase+"`.`parties` (`partyid`) ON UPDATE NO ACTION ON DELETE CASCADE)", function (err, result) {
           if (err) ErrorHandling(err);
           console.log("Players-Table created");
         });
@@ -101,4 +101,4 @@ client.on('ready', () => {
   });
 });
 
-client.login(token);
+client.login(config.token);
