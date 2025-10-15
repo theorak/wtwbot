@@ -1,14 +1,20 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
 const sql = require('../self-modules/sql.js');
-const fs = require('fs');
+let leaders = [];
 
-let rawdata = fs.readFileSync('json-storage/factions.json');
-let factions = JSON.parse(rawdata);
+function loadLeaders(dbcon) {
+    sql.innerSelect("*", "leaders", "", dbcon, async (results) => {                
+        results.forEach(result => {                    
+            leaders[result['faction']].push(result);
+        });
+    });
+}
 
 function getImg(interaction){
     let url;
-    factions["factions"][interaction.options.get("faction").value].forEach(element => {
+    // TODO: could do ID matching
+    leaders[interaction.options.get("faction").value].forEach(element => {
         if(interaction.options.get("leader").value == element.name){
             url = element.img;
         }
@@ -43,12 +49,13 @@ module.exports = {
                 .setRequired(true)),
     
     async autocomplete(interaction, client, dbcon) {
+        loadLeaders(dbcon);
         sql.innerWhereEx("*","players","parties","players.partyID","parties.partyid","players.discordid","!=",'"'+interaction.user.id+'"',dbcon,async (results) => {
             const focusedOption = interaction.options.getFocused(true);
             let choices = [];
 
             if (focusedOption.name === 'faction') {
-                Object.keys(factions["factions"]).forEach(element => {
+                Object.keys(leaders).forEach(element => {
                     choices.push(element);
                 })
             }
@@ -56,7 +63,7 @@ module.exports = {
             if (focusedOption.name === 'leader') {
                 let faction = interaction.options.get('faction')?.value;
                 if(faction != undefined){
-                    factions["factions"][faction].forEach(element => {
+                    leaders[faction].forEach(element => {
                         choices.push(element.name);
                     })
                 }else{

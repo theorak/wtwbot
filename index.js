@@ -4,6 +4,8 @@ const { strictEqual } = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
 let config = JSON.parse(fs.readFileSync('json-storage/config.json'));
+//let factionsConfig = JSON.parse(fs.readFileSync('json-storage/factions.json'));
+let leadersConfig = JSON.parse(fs.readFileSync('json-storage/leaders.json'));
 
 var dbcon  = mysql.createConnection({
 	host     : config.dbhostname,
@@ -69,32 +71,62 @@ client.on('ready', () => {
     if (err) throw ErrorHandling(err);
     
     await dbcon.query("SHOW TABLES LIKE 'parties';", async function (err, result) {
-      if(err) ErrorHandling(err);
+      if (err) ErrorHandling(err);
 
-      if(result.length == 0){
-        console.log('"Parties"-Table dont exist. Creating...');
+      if (result.length == 0) {
+        console.log('"Parties"-table dont exist. Creating...');
         await dbcon.query("CREATE TABLE `parties` (`partyid` INT(11) NOT NULL AUTO_INCREMENT,`tag` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`owner` BIGINT(20) NOT NULL,PRIMARY KEY (`partyid`) USING BTREE)", function (err, result) {
           if (err) ErrorHandling(err);
-          console.log("Parties-Table created!");
+          console.log("Parties-table created!");
         });
-      }else{
+      } else {
         console.log('"Parties"-table exist!');
       }
-    })
+    });
 
     await dbcon.query("SHOW TABLES LIKE 'players';", async function (err, result) {
-      if(err) ErrorHandling(err);
+      if (err) ErrorHandling(err);
       
-      if(result.length == 0){
-        console.log('"Players"-Table dont exist. Creating...');
+      if (result.length == 0) {
+        console.log('"Players"-table dont exist. Creating...');
         await dbcon.query("CREATE TABLE `players` (`id` INT(11) NOT NULL AUTO_INCREMENT,`discordid` BIGINT(20) NULL DEFAULT NULL,`name` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`partyID` INT(11) NULL DEFAULT '0',PRIMARY KEY (`id`) USING BTREE,INDEX `FK_players_parties` (`partyID`) USING BTREE,CONSTRAINT `FK_players_parties` FOREIGN KEY (`partyID`) REFERENCES `"+config.dbdatabase+"`.`parties` (`partyid`) ON UPDATE NO ACTION ON DELETE CASCADE)", function (err, result) {
           if (err) ErrorHandling(err);
-          console.log("Players-Table created");
+          console.log("Players-table created!");
         });
-      }else{
+      } else {
         console.log('"Players"-table exist!');
       }
-    })
+    });
+
+    await dbcon.query("SHOW TABLES LIKE 'leaders';", async function (err, result) {
+      if(err) ErrorHandling(err);
+      
+      if (result.length == 0) {
+        console.log('"Leaders"-table dont exist. Creating...');
+        await dbcon.query("CREATE TABLE `leaders` (`id` INT(11) NOT NULL AUTO_INCREMENT,`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`img` TEXT NOT NULL COLLATE 'utf8mb4_general_ci';", function (err, result) {
+          if (err) ErrorHandling(err);
+          console.log("Leaders-table created!");
+        });
+      } else {
+        console.log('"Leaders"-table exist!');
+      }
+    });
+    
+    //let factions = factionsConfig["factions"];
+    leadersCount = await dbcon.query("SELECT COUNT(*) FROM leaders;");
+    let leaders = leadersConfig['leaders'];
+    if (leaders.lenght >= 0 && leadersCount < leaders.length) {      
+      console.log('"Leaders"-table saving/updating leaders...');
+      // DELETE ALL, then INSERT, TODO: could work via id UPDATE
+      await dbcon.query("DELTE ALL FROM `leaders`");
+      Object.keys(leaders).forEach(async key => {
+        leader = leaders[key];
+        await dbcon.query("INSERT INTO `leaders` (faction, leader, img) VALUES ("+leader['faction']+", "+leader['leader']+", "+leader['img']+");", function (err, result) {
+          if (err) ErrorHandling(err);
+          console.log("Added leader: "+leader['faction']+" / "+leader['leader']+" / "+leader['img'])
+        });
+      });
+    }
 
     console.log("Database connected!");
     console.log("Bot online!");

@@ -61,6 +61,7 @@ Starts the app.
 - Add an image, screenshot of the map e.g. to the party details.
 
 ## Additional Info
-Faction and leader data is up to date in **/wtwbot/json-storage/factions.json**, it is overwritten on update. *(better not modify this list)*
+Faction and leader data is up to date in **/wtwbot/json-storage/leaders.json**, it is overwritten on update. *(better not modify this list)*.
+This file is read into the sql database as well, if you wish to update the DB, just lenghten the list or empty the table 'leaders'.
 
 Want autostart or multiple instances, try PM2: https://www.slingacademy.com/article/pm2-how-to-auto-restart-nodejs-app-on-server-reboot/
