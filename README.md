@@ -34,7 +34,7 @@ OAuth2 token from server owner.
 How to find your IDs: https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID
 
 ### To start
-```npm index```
+```node index.js```
 Starts the app.
 
 ## List of supported commands:
@@ -44,7 +44,7 @@ Starts the app.
 
 */leave [partytag]*
 - Leave an existing party.
-
+s
 */parties*
 - List all known parties.
 

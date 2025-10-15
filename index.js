@@ -64,7 +64,7 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.on('ready', () => {  
+client.on('clientReady', () => {  
   dbcon.connect(async function(err) {
     if (err) throw ErrorHandling(err);
     
