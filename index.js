@@ -42,10 +42,6 @@ function createConnection() {
 }
 
 function queryDatabase(sql, callback) {
-  if (!connection || connection.state !== 'connected') {
-      console.log('Connection not available, attempting to use...');
-      return setTimeout(() => queryDatabase(sql, callback), 1000); // should queue, just timeout for now
-  }
   connection.query(sql, (err, results) => {
       if (err) {
           console.error('Error during query:', err); // query specific errors
@@ -103,7 +99,6 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.on('clientReady', async () => {
-
   queryDatabase("SHOW TABLES LIKE 'parties';", async function (err, result) {
     if (result.length == 0){
       console.log('"Parties"-Table dont exist. Creating...');
