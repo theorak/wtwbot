@@ -14,8 +14,8 @@ module.exports = {
             return options;
         }),
 
-    async autocomplete(interaction, client, dbcon) {
-        sql.innerSelectWhere("tag","players","parties","players.partyID","parties.partyid","discordid",interaction.user.id,dbcon,async (results) => {
+    async autocomplete(interaction, client, connection) {
+        sql.innerSelectWhere("tag","players","parties","players.partyID","parties.partyid","discordid",interaction.user.id,connection,async (results) => {
                 const focusedOption = interaction.options.getFocused(true);
                 let choices = [];
         
@@ -34,12 +34,12 @@ module.exports = {
             })
     },
 
-    async execute(interaction, client, dbcon) {
+    async execute(interaction, client, connection) {
         const member = interaction.guild.members.cache.get(interaction.user.id);
         const roleToRemove = interaction.guild.roles.cache.find(role => role.name === 'Party: '+interaction.options.get("partytag").value);
         member.roles.remove(roleToRemove);
 
-        sql.customNB(`DELETE players FROM players INNER JOIN parties ON players.partyID=parties.partyid WHERE players.discordid='${interaction.user.id}' AND parties.tag='${interaction.options.get("partytag").value}'`,dbcon);
+        sql.customNB(`DELETE players FROM players INNER JOIN parties ON players.partyID=parties.partyid WHERE players.discordid='${interaction.user.id}' AND parties.tag='${interaction.options.get("partytag").value}'`,connection);
 
         interaction.reply(`You left the party ${interaction.options.get("partytag").value}`);
     }

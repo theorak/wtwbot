@@ -20,9 +20,9 @@ module.exports = {
             .setDescription("Upload the current map of game")
         ),
 
-    async autocomplete(interaction, client, dbcon) {
+    async autocomplete(interaction, client, connection) {
         if(interaction.member.roles.cache.some(r => r.name === "Der oberste Adel")){
-            sql.read("tag","parties",dbcon, async (resultsadm) => {
+            sql.read("tag","parties",connection, async (resultsadm) => {
                 const focusedOption = interaction.options.getFocused(true);
                 let choices = [];
         
@@ -40,7 +40,7 @@ module.exports = {
                 );
             })
         }else{
-            sql.where("*","parties","owner",'"'+interaction.user.id+'"',dbcon,async (results) => {
+            sql.where("*","parties","owner",'"'+interaction.user.id+'"',connection,async (results) => {
                 const focusedOption = interaction.options.getFocused(true);
                 let choices = [];
         
@@ -60,8 +60,8 @@ module.exports = {
         }
     },
 
-    async execute(interaction, client, dbcon) {
-        sql.update("parties",'map="'+interaction.options.getAttachment('map').url+'"','parties.tag="'+interaction.options.get("partytag").value+'"',dbcon);
+    async execute(interaction, client, connection) {
+        sql.update("parties",'map="'+interaction.options.getAttachment('map').url+'"','parties.tag="'+interaction.options.get("partytag").value+'"',connection);
         interaction.reply("Updated Party "+interaction.options.get("partytag").value+".");
     }
 }

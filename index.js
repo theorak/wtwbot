@@ -4,20 +4,65 @@ const { strictEqual } = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
 let config = JSON.parse(fs.readFileSync('json-storage/config.json'));
+let connection = null;
 
-var dbcon  = mysql.createConnection({
-	host     : config.dbhostname,
-	user     : config.dbusername,
-	password : config.dbpassword,
-	database : config.dbdatabase
+function createConnection() {
+  connection = mysql.createConnection({
+    host     : config.dbhostname,
+    user     : config.dbusername,
+    password : config.dbpassword,
+    database : config.dbdatabase
   });
-  
+
+  connection.connect(err => {
+      if (err) {
+          console.error('Error connecting to MySQL:', err);
+          setTimeout(createConnection, 5000); // Attempt to reconnect after 5 seconds
+          return;
+      }
+      console.log('Connected to MySQL as ID:', connection.threadId);
+  });
+
+  // Handle errors on the connection
+  connection.on('error', (err) => {
+      console.error('MySQL Connection Error:', err);
+      if (err.code === 'PROTOCOL_CONNECTION_LOST' || err.code === 'ECONNRESET') {
+          console.log('Attempting to reconnect...');
+          connection.destroy(); // Close the current connection
+          setTimeout(createConnection, 5000); // Attempt to reconnect
+      } else {
+          throw err; // Re-throw other errors to crash the app if unrecoverable
+      }
+  });
+
+  connection.on('close', () => {
+      console.log('MySQL connection closed.');
+      // Optionally attempt reconnect here as well, though 'error' event is more common
+  });
+}
+
+function queryDatabase(sql, callback) {
+  if (!connection || connection.state !== 'connected') {
+      console.log('Connection not available, attempting to use...');
+      return setTimeout(() => queryDatabase(sql, callback), 1000); // should queue, just timeout for now
+  }
+  connection.query(sql, (err, results) => {
+      if (err) {
+          console.error('Error during query:', err); // query specific errors
+          callback(err, null);
+      } else {
+          callback(null, results);
+      }
+  });
+}
+
+// Discord connection, as bot user
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.MessageContent,
-    ]
-  })
+  intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.MessageContent,
+  ]
+})
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -29,23 +74,18 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command);
 }
 
-async function ErrorHandling(error){
-  let user = await client.users.fetch(config.discordlogprofile);
-  user.send("**Warhammer Bot**\nAn Error occurred!\n\n"+error+"\n\nRestarting...");
-}
+// start DB connection
+createConnection();
 
-client.on('interactionCreate', async interaction => {
-    
+client.on('interactionCreate', async interaction => {    
     if (!interaction.isCommand()){
         if(interaction.isAutocomplete()){
             const command = client.commands.get(interaction.commandName);
             if (!command) return;
 
 	        try {
-		        await command.autocomplete(interaction, client, dbcon);
+		        await command.autocomplete(interaction, client, connection);
 	        } catch (error) {
-		        console.error(error);
-            ErrorHandling(error);
 		        await interaction.reply({ content: 'There was an error while autocompleting this command!', ephemeral: true });
 	        }
         }
@@ -56,49 +96,36 @@ client.on('interactionCreate', async interaction => {
     if (!command) return;
 
 	try {
-		await command.execute(interaction, client, dbcon);
+		await command.execute(interaction, client, connection);
 	} catch (error) {
-		console.error(error);
-    ErrorHandling(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
 
-client.on('clientReady', () => {  
-  dbcon.connect(async function(err) {
-    if (err) throw ErrorHandling(err);
-    
-    await dbcon.query("SHOW TABLES LIKE 'parties';", async function (err, result) {
-      if(err) ErrorHandling(err);
+client.on('clientReady', async () => {
 
-      if(result.length == 0){
-        console.log('"Parties"-Table dont exist. Creating...');
-        await dbcon.query("CREATE TABLE `parties` (`partyid` INT(11) NOT NULL AUTO_INCREMENT,`tag` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`owner` BIGINT(20) NOT NULL,PRIMARY KEY (`partyid`) USING BTREE)", function (err, result) {
-          if (err) ErrorHandling(err);
-          console.log("Parties-Table created!");
-        });
-      }else{
-        console.log('"Parties"-table exist!');
-      }
-    })
+  queryDatabase("SHOW TABLES LIKE 'parties';", async function (err, result) {
+    if (result.length == 0){
+      console.log('"Parties"-Table dont exist. Creating...');
+      queryDatabase("CREATE TABLE `parties` (`partyid` INT(11) NOT NULL AUTO_INCREMENT,`tag` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`owner` BIGINT(20) NOT NULL,PRIMARY KEY (`partyid`) USING BTREE)", function (err, result) {
+        console.log("Parties-Table created!");
+      });
+    } else {
+      console.log('"Parties"-table exist!');
+    }
+  })
 
-    await dbcon.query("SHOW TABLES LIKE 'players';", async function (err, result) {
-      if(err) ErrorHandling(err);
-      
-      if(result.length == 0){
-        console.log('"Players"-Table dont exist. Creating...');
-        await dbcon.query("CREATE TABLE `players` (`id` INT(11) NOT NULL AUTO_INCREMENT,`discordid` BIGINT(20) NULL DEFAULT NULL,`name` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`partyID` INT(11) NULL DEFAULT '0',PRIMARY KEY (`id`) USING BTREE,INDEX `FK_players_parties` (`partyID`) USING BTREE,CONSTRAINT `FK_players_parties` FOREIGN KEY (`partyID`) REFERENCES `"+config.dbdatabase+"`.`parties` (`partyid`) ON UPDATE NO ACTION ON DELETE CASCADE)", function (err, result) {
-          if (err) ErrorHandling(err);
-          console.log("Players-Table created");
-        });
-      }else{
-        console.log('"Players"-table exist!');
-      }
-    })
-
-    console.log("Database connected!");
-    console.log("Bot online!");
-  });
+  queryDatabase("SHOW TABLES LIKE 'players';", async function (err, result) {
+    if (result.length == 0){
+      console.log('"Players"-Table dont exist. Creating...');
+      queryDatabase("CREATE TABLE `players` (`id` INT(11) NOT NULL AUTO_INCREMENT,`discordid` BIGINT(20) NULL DEFAULT NULL,`name` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`faction` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`leader` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',`partyID` INT(11) NULL DEFAULT '0',PRIMARY KEY (`id`) USING BTREE,INDEX `FK_players_parties` (`partyID`) USING BTREE,CONSTRAINT `FK_players_parties` FOREIGN KEY (`partyID`) REFERENCES `"+config.dbdatabase+"`.`parties` (`partyid`) ON UPDATE NO ACTION ON DELETE CASCADE)", function (err, result) {
+        console.log("Players-Table created");
+      });
+    } else {
+      console.log('"Players"-table exist!');
+    }
+  })
+  console.log("Bot online!");
 });
 
 client.login(config.token);

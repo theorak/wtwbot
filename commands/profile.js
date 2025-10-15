@@ -7,8 +7,8 @@ module.exports = {
 		.setName('profile')
 		.setDescription('All parties you´re in'),
 
-    async execute(interaction, client, dbcon) {
-        sql.innerSelectWhere("*","players","parties","players.partyID","parties.partyid","players.discordid",'"'+interaction.user.id+'"',dbcon,async (results) => {
+    async execute(interaction, client, connection) {
+        sql.innerSelectWhere("*","players","parties","players.partyID","parties.partyid","players.discordid",'"'+interaction.user.id+'"',connection,async (results) => {
             if(results[0]){
                 const exampleEmbed = new EmbedBuilder();
                 exampleEmbed.setColor("#000000")

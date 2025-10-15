@@ -16,20 +16,20 @@ After checking out this repository to your public directory, perform the followi
 ```npm install```
 Downloads node modules and updates if neccecary.
 
-Please create a **config.json** file in **/wtwbot/json-storage** with the following contents, filling out the empty spaces:
+Please create a configuration file in **/wtwbot/json-storage/config.json** with the following contents, filling out the empty spaces (you may rename the example file):
 ```
 {
-	"token": "",
-	"discordlogprofile": "",
-	"clientId": "",
-	"guildId": "",    
-	"dbhostname": "",
-	"dbusername": "",
-	"dbpassword": "",
-	"dbdatabase": ""
+	"token": "<security token of the app/bot>",
+	"clientId": "<ID of the bot>",
+	"guildId": "<ID of the discord server>", 
+	"dbhostname": "<SQL database IP/Domain>",
+	"dbusername": "<SQL database username>",
+	"dbpassword": "<SQL database password>",
+	"dbdatabase": "<SQL database name>"
 }
 ```
-OAuth2 token from server owner.
+Register your bot as app and generate an security token:
+https://discord.com/developers/applications
 
 How to find your IDs: https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID
 

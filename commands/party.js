@@ -15,8 +15,8 @@ module.exports = {
             return options;
         }),
 
-    async autocomplete(interaction, client, dbcon) {
-        sql.read("tag","parties",dbcon, async (partytags) =>{
+    async autocomplete(interaction, client, connection) {
+        sql.read("tag","parties",connection, async (partytags) =>{
             const focusedOption = interaction.options.getFocused(true);
             let choices = [];
     
@@ -35,8 +35,8 @@ module.exports = {
         })
     },
 
-    async execute(interaction, client, dbcon) {
-        sql.innerSelectWhere("*","players","parties","players.partyID","parties.partyid","parties.tag",'"'+interaction.options.get("partytag").value+'"',dbcon,async (results) => {
+    async execute(interaction, client, connection) {
+        sql.innerSelectWhere("*","players","parties","players.partyID","parties.partyid","parties.tag",'"'+interaction.options.get("partytag").value+'"',connection,async (results) => {
             const exampleEmbed = new EmbedBuilder();
             exampleEmbed.setColor("#000000")
 			    .setTimestamp()

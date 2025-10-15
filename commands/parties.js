@@ -7,8 +7,8 @@ module.exports = {
 		.setName('parties')
 		.setDescription('List all parties'),
 
-    async execute(interaction, client, dbcon) {
-        await sql.custom("SELECT parties.tag, count(players.partyID) as AllPlayers from players left join parties on (players.partyID = parties.partyid) group by players.partyID",dbcon,async (results) => {
+    async execute(interaction, client, connection) {
+        await sql.custom("SELECT parties.tag, count(players.partyID) as AllPlayers from players left join parties on (players.partyID = parties.partyid) group by players.partyID",connection,async (results) => {
             const exampleEmbed = new EmbedBuilder();
             exampleEmbed.setColor("#000000")
 			    .setTimestamp()

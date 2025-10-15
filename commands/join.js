@@ -42,8 +42,8 @@ module.exports = {
                 .setAutocomplete(true)
                 .setRequired(true)),
     
-    async autocomplete(interaction, client, dbcon) {
-        sql.innerWhereEx("*","players","parties","players.partyID","parties.partyid","players.discordid","!=",'"'+interaction.user.id+'"',dbcon,async (results) => {
+    async autocomplete(interaction, client, connection) {
+        sql.innerWhereEx("*","players","parties","players.partyID","parties.partyid","players.discordid","!=",'"'+interaction.user.id+'"',connection,async (results) => {
             const focusedOption = interaction.options.getFocused(true);
             let choices = [];
 
@@ -80,8 +80,8 @@ module.exports = {
         });
     },
 
-    async execute(interaction, client, dbcon) {
-        sql.innerSelectWhere("leader,tag","players","parties","players.partyID","parties.partyid","discordid",interaction.user.id,dbcon,async (results) => {
+    async execute(interaction, client, connection) {
+        sql.innerSelectWhere("leader,tag","players","parties","players.partyID","parties.partyid","discordid",interaction.user.id,connection,async (results) => {
             let exist = false;
             let leader;
             results.forEach((element) => {
@@ -97,12 +97,12 @@ module.exports = {
             exampleEmbed.setColor("#000000")
 			    .setTimestamp();
             
-            sql.where("partyid,tag","parties","tag",'"'+interaction.options.get("partytag").value+'"', dbcon, async (Partyresults) => {
+            sql.where("partyid,tag","parties","tag",'"'+interaction.options.get("partytag").value+'"', connection, async (Partyresults) => {
                 console.log(Partyresults[0]);
                 if(Partyresults[0]){
                     console.log("Party Gefunden");
                     if(!exist){
-                        sql.write("players (discordid,name,faction,leader,partyid)",'('+interaction.user.id+',"'+interaction.user.username+'","'+interaction.options.get("faction").value+'","'+interaction.options.get("leader").value+'",'+Partyresults[0]["partyid"]+')',dbcon);
+                        sql.write("players (discordid,name,faction,leader,partyid)",'('+interaction.user.id+',"'+interaction.user.username+'","'+interaction.options.get("faction").value+'","'+interaction.options.get("leader").value+'",'+Partyresults[0]["partyid"]+')',connection);
                         
                         //Rolle vergeben
                         const member = interaction.guild.members.cache.get(interaction.user.id);
@@ -120,7 +120,7 @@ module.exports = {
                     }
 
                 }else{
-                    sql.write("parties (tag,owner)",'("'+interaction.options.get("partytag").value+'","'+interaction.user.id+'")',dbcon);
+                    sql.write("parties (tag,owner)",'("'+interaction.options.get("partytag").value+'","'+interaction.user.id+'")',connection);
 
                     //Rolle erstellen
                     interaction.guild.roles.create({
@@ -134,9 +134,9 @@ module.exports = {
                          await interaction.member.roles.add(role);
                     });
 
-                    sql.where("partyid,tag","parties","tag",'"'+interaction.options.get("partytag").value+'"', dbcon, async (PartySelectResults) => {
+                    sql.where("partyid,tag","parties","tag",'"'+interaction.options.get("partytag").value+'"', connection, async (PartySelectResults) => {
                         if(!exist){
-                            sql.write("players (discordid,name,faction,leader,partyid)",'('+interaction.user.id+',"'+interaction.user.username+'","'+interaction.options.get("faction").value+'","'+interaction.options.get("leader").value+'",'+PartySelectResults[0]["partyid"]+')',dbcon);
+                            sql.write("players (discordid,name,faction,leader,partyid)",'('+interaction.user.id+',"'+interaction.user.username+'","'+interaction.options.get("faction").value+'","'+interaction.options.get("leader").value+'",'+PartySelectResults[0]["partyid"]+')',connection);
                             
                             let img = getImg(interaction);
                             exampleEmbed.setTitle("Successfully created the party!");
