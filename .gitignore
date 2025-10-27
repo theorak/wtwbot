@@ -131,3 +131,6 @@ dist
 
 # Discord Bot server config
 json-storage/config.json
+
+# Cache folder
+cache/
